@@ -33,3 +33,6 @@ class Counter extends Component {
 }
 
 export default App;
+
+//actionとは・・・アプリーけんションの中で何が起きたかという情報を持つオブジェクト
+//
