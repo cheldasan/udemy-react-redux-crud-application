@@ -5,7 +5,7 @@ import { Provider } from 'react-redux';
 
 import './index.css';
 import reducer from './reducers';
-import App from './components/App';
+import EventsIndex from './components/events_index';
 import * as serviceWorker from './serviceWorker';
 
 //ここで作成されるsotreに./reducers内の全てのreducerが集約される
@@ -14,7 +14,7 @@ const store = createStore(reducer)
 ReactDOM.render(
   //storeがアプリケーション内のどのcomponentからでもアクセスすることができるようにするためにProviderを利用する
   <Provider store={store}>
-    <App />
+    <EventsIndex />
   </Provider>,
   document.getElementById('root')
 );
