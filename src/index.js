@@ -3,10 +3,12 @@ import ReactDOM from 'react-dom';
 import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import './index.css';
 import reducer from './reducers';
 import EventsIndex from './components/events_index';
+import EventsNew from './components/events_new';
 import * as serviceWorker from './serviceWorker';
 
 //ここで作成されるsotreに./reducers内の全てのreducerが集約される
@@ -15,7 +17,12 @@ const store = createStore(reducer, applyMiddleware(thunk))
 ReactDOM.render(
   //storeがアプリケーション内のどのcomponentからでもアクセスすることができるようにするためにProviderを利用する
   <Provider store={store}>
-    <EventsIndex />
+    <BrowserRouter>
+      <Switch>
+        <Route exact patch="/events/new" component={EventsNew} />
+        <Route exact path="/" component={EventsIndex} />
+      </Switch>
+    </BrowserRouter>
   </Provider>,
   document.getElementById('root')
 );
