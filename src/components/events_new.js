@@ -28,14 +28,14 @@ class EventsNew extends Component {
   }
 
   render() {
-    const { handleSubmit, pristine, submitting } = this.props
+    const { handleSubmit, pristine, submitting, invalid } = this.props
     return (
       <form onSubmit={handleSubmit(this.onSubmit)}>
         <div><Field label="Title" name="title" type="text" component={this.renderField} /></div>
         <div><Field label="Body" name="body" type="text" component={this.renderField} /></div>
 
         <div>
-          <input type="submit" value="Submit" disabled={pristine || submitting}></input>
+          <input type="submit" value="Submit" disabled={pristine || submitting || invalid}></input>
           <Link to="/">Cancel</Link>
         </div>
       </form>
@@ -47,7 +47,7 @@ const validate = values => {
   const errors = { }
 
   if (!values.title) errors.title = "Enter a title, please."
-  if (!values.title) errors.body = "Enter a body, please."
+  if (!values.body) errors.body = "Enter a body, please."
 
   return errors
 }
